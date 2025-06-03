@@ -1,113 +1,29 @@
-export interface SimplePointElementOptions {
-    backgroundColor?: string;
-    borderColor?: string;
-    borderWidth?: number;
-    radius?: number; // Kích thước điểm
-    hoverBackgroundColor?: string;
-    hoverBorderColor?: string;
-    hoverBorderWidth?: number;
-    hoverRadius?: number;
-}
-
-export interface SimpleLineElementOptions {
-    borderColor?: string;
-    borderWidth?: number;
-    backgroundColor?: string;
-    tension?: number;
-}
-
-export interface SimpleBarElementOptions {
-    backgroundColor?: string;
-    borderColor?: string;
-    borderWidth?: number;
-    hoverBackgroundColor?: string;
-    hoverBorderColor?: string;
-    hoverBorderWidth?: number;
-}
-
-export interface SimpleArcElementOptions {
-    backgroundColor?: string;
-    borderColor?: string;
-    borderWidth?: number;
-    hoverBackgroundColor?: string;
-    hoverBorderColor?: string;
-    hoverBorderWidth?: number;
-}
-
-export interface SimpleChartElementsConfiguration {
-    point?: SimplePointElementOptions;
-    line?: SimpleLineElementOptions;
-    bar?: SimpleBarElementOptions;
-    arc?: SimpleArcElementOptions;
-}
-
-// --- Cấu trúc Dataset đơn giản hóa ---
 export interface SimpleChartDataset {
     label?: string;
-    data: any[] | { x: any; y: any }[];
+    data: any[] | { x: any; y: any }[]; // Data is core
 
-    // Màu sắc và viền cho dataset
-    backgroundColor?: string | string[]; // Đối với bar/pie, đây có thể là màu đơn. Chart.js sẽ lặp lại nếu cần.
+    // Colors and borders for the dataset
+    backgroundColor?: string | string[]; // For bar/pie, this can be an array of colors for each segment, or a single color.
     borderColor?: string ;
     borderWidth?: number;
 
     // Line dataset specific styling (fill color)
-    fill?: boolean | 'start' | 'end' | 'origin';
+    fill?: boolean | 'start' | 'end' | 'origin'; // Fill area under the line
 
-    // Point specific styling (cho line, scatter)
+    // Point specific styling (for line, scatter)
     pointBackgroundColor?: string;
     pointBorderColor?: string;
     pointBorderWidth?: number;
     pointRadius?: number;
-    pointHoverBackgroundColor?: string;
-    pointHoverBorderColor?: string;
-    pointHoverBorderWidth?: number;
-    pointHoverRadius?: number;
-
-    // Hover chung cho elements trong dataset
-    hoverBackgroundColor?: string | string[];
-    hoverBorderColor?: string;
-    hoverBorderWidth?: number;
-
-    [key: string]: any;
 }
 
-// --- Cấu trúc dữ liệu biểu đồ ---
+// --- Chart Data Structure ---
 export interface SimpleGenericChartData {
     labels?: string[];
     datasets: SimpleChartDataset[];
 }
 
-// --- Tùy chọn Scales đơn giản (chỉ màu sắc) ---
-export interface SimpleTickOptions {
-    color?: string;
-}
-
-export interface SimpleGridLineOptions {
-    color?: string;
-    borderColor?: string;
-    borderWidth?: number;
-}
-
-export interface SimpleAngleLineOptions { // For radar chart
-    color?: string;
-    lineWidth?: number;
-}
-
-export interface SimplePointLabelOptions { // For radar chart
-    color?: string;
-}
-
-export interface SimpleScaleOptions {
-    grid?: SimpleGridLineOptions;
-    ticks?: SimpleTickOptions;
-}
-
-export interface SimpleScalesOptions {
-    [key: string]: SimpleScaleOptions; // Cho phép các trục x, y, r...
-}
-
-// --- Tùy chọn Tooltip đơn giản (chỉ màu sắc) ---
+// --- Simplified Tooltip Options (colors only) ---
 export interface SimpleTooltipOptions {
     enabled?: boolean;
     backgroundColor?: string;
@@ -118,47 +34,42 @@ export interface SimpleTooltipOptions {
     borderWidth?: number;
 }
 
+// --- Simplified Legend Options (label color only) ---
 export interface SimpleLegendLabelOptions {
-    color?: string;
+    color?: string; // Text color of items in the legend
 }
 
 export interface SimpleLegendOptions {
     labels?: SimpleLegendLabelOptions;
 }
 
-
-// --- Tùy chọn Plugins đơn giản ---
+// --- Simplified Plugin Options ---
 export interface SimplePluginOptions {
     tooltip?: SimpleTooltipOptions;
     legend?: SimpleLegendOptions;
-    title?: {
+    title?: { // Main chart title
         display?: boolean;
         text?: string | string[];
         color?: string;
     };
 }
 
-// --- BaseChartOptions đơn giản hóa ---
+// --- Simplified BaseChartOptions ---
 export interface SimpleBaseChartOptions {
-    responsive?: boolean; // Nên giữ lại
-    maintainAspectRatio?: boolean; // Có thể giữ lại (ảnh hưởng layout nhưng quan trọng)
-    elements?: SimpleChartElementsConfiguration;
-    scales?: SimpleScalesOptions;
+    responsive?: boolean;
     plugins?: SimplePluginOptions;
-    [key: string]: any;
 }
 
-// --- Hồ sơ Branding (giữ nguyên hoặc đơn giản hóa nếu cần) ---
+// --- Branding Profile (keep as is or simplify if needed) ---
 export interface BrandingProfile {
     containerBackgroundColor?: string;
-    chartTitleColor?: string; // Có thể map vào plugins.title.color
-    fontFamily?: string; // Khó áp dụng nếu không muốn ảnh hưởng layout từ font size
+    chartTitleColor?: string; // Can be mapped to plugins.title.color
 }
 
-// --- ChartConfig sử dụng các interface đơn giản hóa ---
+// --- ChartConfig using simplified interfaces ---
 export interface FinalChartConfig {
     type: 'scatter' | 'bar' | 'pie' | 'line';
     data: SimpleGenericChartData;
     options?: SimpleBaseChartOptions;
-    brandingProfile?: BrandingProfile; // Giữ lại để style container
+    brandingProfile?: BrandingProfile; // Keep for styling the container
 }

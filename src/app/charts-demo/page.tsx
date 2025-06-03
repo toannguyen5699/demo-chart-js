@@ -12,8 +12,6 @@ const barChartConfig: FinalChartConfig = {
                 backgroundColor: 'rgba(75, 192, 192, 0.7)',
                 borderColor: 'rgb(75, 192, 192)',
                 borderWidth: 1,
-                hoverBackgroundColor: 'rgba(75, 192, 192, 1)',
-                hoverBorderColor: 'rgb(50, 150, 150)',
             },
             {
                 label: 'Sản phẩm B', // Nhãn cho nhóm cột thứ hai
@@ -21,8 +19,6 @@ const barChartConfig: FinalChartConfig = {
                 backgroundColor: 'rgba(255, 99, 132, 0.7)',
                 borderColor: 'rgb(255, 99, 132)',
                 borderWidth: 1,
-                hoverBackgroundColor: 'rgba(255, 99, 132, 1)',
-                hoverBorderColor: 'rgb(200, 70, 100)',
             },
             {
                 label: 'Sản phẩm C', // Nhãn cho nhóm cột thứ ba
@@ -30,37 +26,11 @@ const barChartConfig: FinalChartConfig = {
                 backgroundColor: 'rgba(54, 162, 235, 0.7)',
                 borderColor: 'rgb(54, 162, 235)',
                 borderWidth: 1,
-                hoverBackgroundColor: 'rgba(54, 162, 235, 1)',
-                hoverBorderColor: 'rgb(30, 120, 190)',
             }
         ]
     },
     options: {
         responsive: true,
-        maintainAspectRatio: false,
-        elements: {
-            bar: {
-                // borderWidth: 2, // Ví dụ global element option
-            }
-        },
-        scales: {
-            y: { // Chỉ định rõ trục y
-                grid: {
-                    color: 'rgba(0, 0, 0, 0.05)', // Màu lưới trục y
-                },
-                ticks: {
-                    color: '#666', // Màu chữ tick trục y
-                }
-            },
-            x: { // Chỉ định rõ trục x
-                grid: {
-                    color: 'rgba(0, 0, 0, 0.02)', // Màu lưới trục x
-                },
-                ticks: {
-                    color: '#888', // Màu chữ tick trục x
-                }
-            }
-        },
         plugins: {
             title: {
                 display: true,
@@ -100,43 +70,13 @@ const lineChartConfig: FinalChartConfig = {
             borderWidth: 2,
             backgroundColor: 'rgba(255, 99, 132, 0.1)', // Màu fill dưới đường
             fill: true,
-            tension: 0.1, // Giữ lại tension để đường cong mềm mại
             pointBackgroundColor: 'rgb(255, 99, 132)',
             pointBorderColor: '#fff',
             pointRadius: 4,
-            pointHoverRadius: 6,
-            pointBorderWidth: 1,
         }]
     },
     options: {
         responsive: true,
-        maintainAspectRatio: false,
-        elements: {
-            line: {
-                // tension: 0 // Global tension
-            },
-            point: {
-                // radius: 3 // Global point radius
-            }
-        },
-        scales: {
-            y: {
-                grid: {
-                    color: 'rgba(0,0,0,0.05)',
-                },
-                ticks: {
-                    color: '#666',
-                }
-            },
-            x: {
-                grid: {
-                    color: 'rgba(0,0,0,0.05)',
-                },
-                ticks: {
-                    color: '#888',
-                }
-            }
-        },
         plugins: {
             title: {
                 display: true,
@@ -173,23 +113,10 @@ const pieChartConfig: FinalChartConfig = {
             ],
             borderColor: '#fff',
             borderWidth: 2,
-            hoverBackgroundColor: [
-                'rgb(230, 74, 107)',
-                'rgb(29, 137, 210)',
-                'rgb(230, 180, 61)'
-            ],
-            hoverBorderColor: '#eee',
         }]
     },
     options: {
         responsive: true,
-        maintainAspectRatio: false,
-        elements: {
-            arc: {
-                borderWidth: 1,
-                borderColor: '#ccc'
-            }
-        },
         plugins: {
             title: {
                 display: true,
@@ -227,36 +154,10 @@ const scatterChartConfig: FinalChartConfig = {
             borderColor: 'rgb(153, 102, 255)',
             borderWidth: 1,
             pointRadius: 6,
-            hoverRadius: 8,
-            hoverBorderWidth: 2,
         }]
     },
     options: {
         responsive: true,
-        maintainAspectRatio: false,
-        elements: {
-            point: {
-                // radius: 5, // Global point size
-            }
-        },
-        scales: {
-            y: {
-                grid: {
-                    color: 'rgba(0,0,0,0.05)',
-                },
-                ticks: {
-                    color: '#666',
-                }
-            },
-            x: {
-                grid: {
-                    color: 'rgba(0,0,0,0.05)',
-                },
-                ticks: {
-                    color: '#888',
-                }
-            }
-        },
         plugins: {
             title: {
                 display: true,
