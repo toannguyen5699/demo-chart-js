@@ -14,7 +14,7 @@ import {
     ArcElement,
     Filler,
 } from 'chart.js';
-import { Bar, Line, Pie, Scatter } from 'react-chartjs-2';
+import { Bar, Line, Pie, Scatter, Doughnut, Bubble } from 'react-chartjs-2';
 import {FinalChartConfig, SimpleBaseChartOptions} from "@/types/chart.types";
 
 ChartJS.register(
@@ -54,6 +54,8 @@ const MyChart: React.FC<MyChartProps> = ({ config }) => {
             {config.type === 'line' && <Line data={config.data} options={customizedOptions} />}
             {config.type === 'pie' && <Pie data={config.data} options={customizedOptions} />}
             {config.type === 'scatter' && <Scatter data={config.data} options={customizedOptions} />}
+            {config.type === 'doughnut' && <Doughnut data={config.data} options={customizedOptions} />}
+            {config.type === 'bubble' && <Bubble data={config.data} options={customizedOptions} />}
         </div>
     );
 };

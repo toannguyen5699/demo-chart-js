@@ -33,6 +33,7 @@ export interface SimpleChartDataset {
     pointBorderWidth?: number;
     /** The radius of the points (in pixels). */
     pointRadius?: number;
+    tension?: number;
 }
 
 // --- Chart Data Structure ---
@@ -82,8 +83,6 @@ export interface SimpleLegendOptions {
 
 // --- Simplified Plugin Options ---
 export interface SimplePluginOptions {
-    /** Configuration for the tooltips. */
-    tooltip?: SimpleTooltipOptions;
     /** Configuration for the chart legend. */
     legend?: SimpleLegendOptions;
     /** Configuration for the main chart title. */
@@ -107,6 +106,7 @@ export interface SimpleBaseChartOptions {
     // elements?: SimpleChartElementsConfiguration; // Assuming this was intended to be here from previous versions.
     // /** Configuration for the chart scales (axes). */
     // scales?: SimpleScalesOptions; // Assuming this was intended to be here from previous versions.
+    scales?: any;
 }
 
 // --- Branding Profile (keep as is or simplify if needed) ---
@@ -120,7 +120,7 @@ export interface BrandingProfile {
 // --- ChartConfig using simplified interfaces ---
 export interface FinalChartConfig {
     /** The type of chart to render (e.g., 'bar', 'line'). */
-    type: 'scatter' | 'bar' | 'pie' | 'line';
+    type: 'scatter' | 'bar' | 'pie' | 'line' | 'doughnut' | 'bubble';
     /** The data object for the chart, containing labels and datasets. */
     data: SimpleGenericChartData;
     /** The options object for configuring the chart's appearance and behavior. */
