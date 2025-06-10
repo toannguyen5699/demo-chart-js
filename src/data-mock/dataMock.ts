@@ -1,55 +1,108 @@
-import {FinalChartConfig} from "@/types/chart.types";
+import { FinalChartConfig } from "@/types/chart.types";
+
+const getRandomColorWithOpacity = (opacity: number = 0.5): string => {
+    const r = Math.floor(Math.random() * 255);
+    const g = Math.floor(Math.random() * 255);
+    const b = Math.floor(Math.random() * 255);
+    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
+};
 
 // Bar Group Chart
 export const barGroupChartConfig: FinalChartConfig = {
     type: 'bar',
     data: {
-        labels: ['M1', 'M2', 'M3', 'M4', 'M5'],
+        labels: ['Jan 1, 2021', 'Jan 31, 2021'],
         datasets: [
             {
-                label: 'Sản phẩm A',
-                data: [65, 59, 80, 81, 56],
+                label: 'BTC Price (USD)',
+                data: [3000, 4000],
+                // backgroundColor: ['rgba(54, 162, 235, 0.7)', 'rgba(255, 99, 132, 0.7)'], // Different colors for each bar
+                // borderColor: ['rgba(54, 162, 235, 1)', 'rgba(255, 99, 132, 1)'],
                 backgroundColor: 'rgba(75, 192, 192, 0.7)',
                 borderColor: 'rgb(75, 192, 192)',
-                borderWidth: 1,
+                borderWidth: 1
             },
-            {
-                label: 'Sản phẩm B', // Nhãn cho nhóm cột thứ hai
-                data: [28, 48, 40, 19, 86],
-                backgroundColor: 'rgba(255, 99, 132, 0.7)',
-                borderColor: 'rgb(255, 99, 132)',
-                borderWidth: 1,
-            },
-            {
-                label: 'Sản phẩm C', // Nhãn cho nhóm cột thứ ba
-                data: [45, 25, 35, 51, 70],
-                backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                borderColor: 'rgb(54, 162, 235)',
-                borderWidth: 1,
-            }
         ]
     },
     options: {
-        responsive: true,
-        plugins: {
-            title: {
-                display: true,
-                text: 'Biểu đồ nhiều cột cho mỗi mục', // Cập nhật tiêu đề
-                color: '#333',
-            },
-            legend: {
-                // display: true, // Mặc định là true
-                labels: {
-                    color: '#555', // Màu chữ legend
+        // responsive: true,
+        scales: {
+            y: {
+                // beginAtZero: false, // Prevents the chart from starting at 0
+                title: {
+                    display: true,
+                    text: 'Price (USD)'
                 }
             }
-        }
+        },
+        // plugins: {
+        //     title: {
+        //         display: true,
+        //         text: 'Bitcoin Price Comparison - January 2021',
+        //         color: '#333'
+        //     },
+        //     legend: {
+        //         display: false, //  Since we only have one dataset, hiding the legend can make the chart cleaner.
+        //         labels: {
+        //             color: '#555'
+        //         }
+        //     }
+        // }
     },
     brandingProfile: {
         containerBackgroundColor: '#f9f9f9',
         chartTitleColor: '#2c3e50',
     }
-};
+}
+// export const barGroupChartConfig: FinalChartConfig = {
+//     type: 'bar',
+//     data: {
+//         labels: ['M1', 'M2', 'M3', 'M4', 'M5'],
+//         datasets: [
+//             {
+//                 label: 'Product A',
+//                 data: [65, 59, 80, 81, 56],
+//                 backgroundColor: 'rgba(75, 192, 192, 0.7)',
+//                 borderColor: 'rgb(75, 192, 192)',
+//                 borderWidth: 1,
+//             },
+//             {
+//                 label: 'Product B', // Label for the second column group
+//                 data: [28, 48, 40, 19, 86],
+//                 backgroundColor: 'rgba(255, 99, 132, 0.7)',
+//                 borderColor: 'rgb(255, 99, 132)',
+//                 borderWidth: 1,
+//             },
+//             {
+//                 label: 'Product C', // Label for the third column group
+//                 data: [45, 25, 35, 51, 70],
+//                 backgroundColor: 'rgba(54, 162, 235, 0.7)',
+//                 borderColor: 'rgb(54, 162, 235)',
+//                 borderWidth: 1,
+//             }
+//         ]
+//     },
+//     options: {
+//         responsive: true,
+//         plugins: {
+//             title: {
+//                 display: true,
+//                 text: 'Grouped Bar Chart per Item', // Updated title
+//                 color: '#333',
+//             },
+//             legend: {
+//                 // display: true, // Default is true
+//                 labels: {
+//                     color: '#555', // Legend text color
+//                 }
+//             }
+//         }
+//     },
+//     brandingProfile: {
+//         containerBackgroundColor: '#f9f9f9',
+//         chartTitleColor: '#2c3e50',
+//     }
+// };
 
 // Bar Chart
 export const barChartConfig: FinalChartConfig = {
@@ -58,7 +111,7 @@ export const barChartConfig: FinalChartConfig = {
         labels: ['M1', 'M2', 'M3', 'M4', 'M5'],
         datasets: [
             {
-                label: 'Sản phẩm A',
+                label: 'Product A',
                 data: [65, 59, 80, 81, 56],
                 backgroundColor: 'rgba(75, 192, 192, 0.7)',
                 borderColor: 'rgb(75, 192, 192)',
@@ -71,13 +124,13 @@ export const barChartConfig: FinalChartConfig = {
         plugins: {
             title: {
                 display: true,
-                text: 'Biểu đồ nhiều cột cho mỗi mục', // Cập nhật tiêu đề
+                text: 'Simple Bar Chart', // Updated title
                 color: '#333',
             },
             legend: {
-                // display: true, // Mặc định là true
+                // display: true, // Default is true
                 labels: {
-                    color: '#555', // Màu chữ legend
+                    color: '#555', // Legend text color
                 }
             }
         }
@@ -95,21 +148,21 @@ export const barStackedChartConfig: FinalChartConfig = {
         labels: ['M1', 'M2', 'M3', 'M4', 'M5'],
         datasets: [
             {
-                label: 'Sản phẩm A',
+                label: 'Product A',
                 data: [65, 59, 80, 81, 56],
                 backgroundColor: 'rgba(75, 192, 192, 0.7)',
                 borderColor: 'rgb(75, 192, 192)',
                 borderWidth: 1,
             },
             {
-                label: 'Sản phẩm B', // Nhãn cho nhóm cột thứ hai
+                label: 'Product B',
                 data: [28, 48, 40, 19, 86],
                 backgroundColor: 'rgba(255, 99, 132, 0.7)',
                 borderColor: 'rgb(255, 99, 132)',
                 borderWidth: 1,
             },
             {
-                label: 'Sản phẩm C', // Nhãn cho nhóm cột thứ ba
+                label: 'Product C',
                 data: [45, 25, 35, 51, 70],
                 backgroundColor: 'rgba(54, 162, 235, 0.7)',
                 borderColor: 'rgb(54, 162, 235)',
@@ -122,13 +175,13 @@ export const barStackedChartConfig: FinalChartConfig = {
         plugins: {
             title: {
                 display: true,
-                text: 'Biểu đồ nhiều cột cho mỗi mục', // Cập nhật tiêu đề
+                text: 'Stacked Bar Chart', // Updated title
                 color: '#333',
             },
             legend: {
-                // display: true, // Mặc định là true
+                // display: true, // Default is true
                 labels: {
-                    color: '#555', // Màu chữ legend
+                    color: '#555', // Legend text color
                 }
             }
         },
@@ -153,7 +206,7 @@ export const lineMarkerChartConfig: FinalChartConfig = {
     data: {
         labels: ['D1', 'D2', 'D3', 'D4', 'D5', 'D6'],
         datasets: [{
-            label: 'test',
+            label: 'Sample Dataset',
             data: [120, 150, 100, 180, 160, 200],
             borderColor: 'rgb(255, 99, 132)',
             borderWidth: 2,
@@ -169,7 +222,7 @@ export const lineMarkerChartConfig: FinalChartConfig = {
         plugins: {
             title: {
                 display: true,
-                text: 'Biểu đồ Đường Đơn Giản',
+                text: 'Simple Line Chart with Markers',
                 color: '#333',
             },
             legend: {
@@ -205,15 +258,13 @@ export const lineChartConfig: FinalChartConfig = {
     }
 };
 
-
-
 // Pie Chart
 export const pieChartConfig: FinalChartConfig = {
     type: 'pie',
     data: {
         labels: ['A', 'B', 'C'],
         datasets: [{
-            label: 'Thị phần',
+            label: 'Market Share',
             data: [300, 150, 100],
             backgroundColor: [
                 'rgb(255, 99, 132)',
@@ -229,7 +280,7 @@ export const pieChartConfig: FinalChartConfig = {
         plugins: {
             title: {
                 display: true,
-                text: 'Biểu đồ Tròn Đơn Giản',
+                text: 'Simple Pie Chart',
                 color: '#333',
             },
             legend: {
@@ -250,7 +301,7 @@ export const doughnutChartConfig: FinalChartConfig = {
     data: {
         labels: ['A', 'B', 'C'],
         datasets: [{
-            label: 'Thị phần',
+            label: 'Market Share',
             data: [300, 150, 100],
             backgroundColor: [
                 'rgb(255, 99, 132)',
@@ -266,7 +317,7 @@ export const doughnutChartConfig: FinalChartConfig = {
         plugins: {
             title: {
                 display: true,
-                text: 'Biểu đồ Tròn Đơn Giản',
+                text: 'Simple Doughnut Chart',
                 color: '#333',
             },
             legend: {
@@ -286,7 +337,7 @@ export const scatterChartConfig: FinalChartConfig = {
     type: 'scatter',
     data: {
         datasets: [{
-            label: 'Dữ liệu Phân Tán',
+            label: 'Scatter Dataset',
             data: [
                 { x: 10, y: 20 }, { x: 15, y: 10 }, { x: 7, y: 8 },
                 { x: 12, y: 22 }, { x: 17, y: 12 }, { x: 9, y: 11 }
@@ -302,7 +353,7 @@ export const scatterChartConfig: FinalChartConfig = {
         plugins: {
             title: {
                 display: true,
-                text: 'Biểu đồ Tán Xạ Đơn Giản',
+                text: 'Simple Scatter Chart',
                 color: '#333',
             },
             legend: {
@@ -317,19 +368,13 @@ export const scatterChartConfig: FinalChartConfig = {
     }
 };
 
-const getRandomColorWithOpacity = (opacity: number = 0.5): string => {
-    const r = Math.floor(Math.random() * 255);
-    const g = Math.floor(Math.random() * 255);
-    const b = Math.floor(Math.random() * 255);
-    return `rgba(${r}, ${g}, ${b}, ${opacity})`;
-};
 
 // Bubble Chart
 export const bubbleChartConfig: FinalChartConfig = {
     type: 'bubble',
     data: {
         datasets: [{
-            label: 'A',
+            label: 'Dataset A',
             data: [
                 { x: 20, y: 30, r: 15 },
                 { x: 40, y: 10, r: 25 },
@@ -347,7 +392,7 @@ export const bubbleChartConfig: FinalChartConfig = {
             borderColor: 'rgba(0, 0, 0, 0.8)',
             borderWidth: 1,
         }, {
-            label: 'B',
+            label: 'Dataset B',
             data: [
                 { x: 30, y: 20, r: 12 },
                 { x: 10, y: 40, r: 18 },
@@ -371,7 +416,7 @@ export const bubbleChartConfig: FinalChartConfig = {
         plugins: {
             title: {
                 display: true,
-                text: 'Biểu đồ Tán Xạ Đơn Giản',
+                text: 'Simple Bubble Chart', // Corrected title
                 color: '#333',
             },
             legend: {

@@ -12,7 +12,7 @@ export interface SimpleChartDataset {
      */
     backgroundColor?: string | string[];
     /** The border color of the dataset elements. */
-    borderColor?: string ;
+    borderColor?: string | string[];
     /** The border width of the dataset elements (in pixels). */
     borderWidth?: number;
 
@@ -75,7 +75,7 @@ export interface SimpleLegendOptions {
     /** Configuration for the legend labels. */
     labels?: SimpleLegendLabelOptions;
     // /** Whether to display the legend. true by default. */
-    // display?: boolean; // Removed as it affects layout
+    display?: boolean; // Removed as it affects layout
     // /** Position of the legend. 'top', 'left', 'bottom', 'right'. */
     // position?: 'top' | 'left' | 'bottom' | 'right'; // Removed as it affects layout
 }
@@ -93,6 +93,10 @@ export interface SimplePluginOptions {
         text?: string | string[];
         /** The color of the title text. */
         color?: string;
+        /** * The position of the title.
+         * 'top' | 'left' | 'bottom' | 'right'.
+         */
+        position?: 'top' | 'left' | 'bottom' | 'right';
     };
 }
 
